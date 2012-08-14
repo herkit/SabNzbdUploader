@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SabNzdbUploader.Application")]
+[assembly: AssemblyTitle("SabNzbdUploader.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SabNzdbUploader.Application")]
+[assembly: AssemblyProduct("SabNzbdUploader.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("53575f57-5559-4d86-9a86-6dce9faac48f")]
+[assembly: Guid("b0e56d87-e2e0-4593-8be0-ec41a36da59c")]
 
 // Version information for an assembly consists of the following four values:
 //

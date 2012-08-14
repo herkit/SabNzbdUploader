@@ -1,0 +1,8 @@
+D:\Projects\SabNzbdUploader\SabNzbdUploader.Core\bin\Debug\SabNzdbUploaderCore.dll
+D:\Projects\SabNzbdUploader\SabNzbdUploader.Core\bin\Debug\SabNzdbUploaderCore.pdb
+D:\Projects\SabNzbdUploader\SabNzbdUploader.Core\bin\Debug\Json.NET Dynamic Extensions.dll
+D:\Projects\SabNzbdUploader\SabNzbdUploader.Core\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\SabNzbdUploader\SabNzbdUploader.Core\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\SabNzbdUploader\SabNzbdUploader.Core\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\SabNzbdUploader\SabNzbdUploader.Core\obj\Debug\SabNzdbUploaderCore.dll
+D:\Projects\SabNzbdUploader\SabNzbdUploader.Core\obj\Debug\SabNzdbUploaderCore.pdb
