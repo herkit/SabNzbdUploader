@@ -1,9 +1,0 @@
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\obj\Debug\ResolveAssemblyReference.cache
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\bin\Debug\SabNzbdUploader.Tests.dll
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\bin\Debug\SabNzbdUploader.Tests.pdb
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\bin\Debug\nunit.framework.dll
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\bin\Debug\SabNzdbUploaderCore.dll
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\bin\Debug\SabNzdbUploaderCore.pdb
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\bin\Debug\nunit.framework.xml
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\obj\Debug\SabNzbdUploader.Tests.dll
-D:\Projects\SabNzbdUploader\SabNzbdUploader.Tests\obj\Debug\SabNzbdUploader.Tests.pdb
