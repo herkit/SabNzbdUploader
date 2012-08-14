@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using System.IO;
 
 namespace SabNzbdUploader
 {
@@ -12,5 +13,14 @@ namespace SabNzbdUploader
     /// </summary>
     public partial class App : Application
     {
+        public static FileInfo NZBFile;
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            if (e.Args.Length > 0)
+            {
+                NZBFile = new FileInfo(e.Args[0]);
+            }
+        }
     }
 }

@@ -14,7 +14,10 @@ namespace Arasoft.SabNzdbUploader.Core.Api
     {
         public Func<string, string> HttpGet = (url) =>
         {
-            return string.Empty;
+            using (var httpclient = new System.Net.WebClient())
+            {
+                return httpclient.DownloadString(url);
+            }
         };
 
         public List<string> GetCategories()

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace SabNzbdUploader
 {
@@ -27,7 +28,23 @@ namespace SabNzbdUploader
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            CategorySelector.DataContext = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi().GetCategories();
+            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
+            List<string> categories = api.GetCategories();
+            CategorySelector.ItemsSource = categories;
+
+            if (App.NZBFile.Exists)
+                FilenameLabel.Content = App.NZBFile.Name;
         }
+
+        private void UploadButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
