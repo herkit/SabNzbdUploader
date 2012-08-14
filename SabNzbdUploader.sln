@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabNzbdUploader.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabNzbdUploader.Core", "SabNzbdUploader.Core\SabNzbdUploader.Core.csproj", "{3CB393FD-C9F5-401A-895C-8512EB4F054A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.NET Dynamic Extensions", "Json.NET Dynamic Extensions\Json.NET Dynamic Extensions.csproj", "{13BCDC4C-833E-4421-9538-5A46253ACADE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,16 +35,6 @@ Global
 		{3CB393FD-C9F5-401A-895C-8512EB4F054A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3CB393FD-C9F5-401A-895C-8512EB4F054A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3CB393FD-C9F5-401A-895C-8512EB4F054A}.Release|x86.ActiveCfg = Release|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{13BCDC4C-833E-4421-9538-5A46253ACADE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
