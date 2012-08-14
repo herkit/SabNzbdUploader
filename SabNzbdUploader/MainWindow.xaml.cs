@@ -38,12 +38,24 @@ namespace SabNzbdUploader
 
         private void UploadButton_Click(object sender, RoutedEventArgs e)
         {
+            string category = "*";
+            if (CategorySelector.SelectedIndex >= 0)
+                category = (string)CategorySelector.SelectedValue;
+
+            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
+            api.UploadFile(App.NZBFile, category);
+
             Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
     }
