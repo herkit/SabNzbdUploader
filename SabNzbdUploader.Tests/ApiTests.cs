@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using Arasoft.SabNzdbUploader.Core.Api;
 
 namespace SabNzbdUploader.Tests
 {
@@ -12,8 +13,6 @@ namespace SabNzbdUploader.Tests
         [Test]
         public void GetCategories()
         {
-            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
-
             api_returns = "{\"categories\":[\"*\",\"movie\"]}";
 
             List<string> categories = api.GetCategories();
@@ -25,22 +24,17 @@ namespace SabNzbdUploader.Tests
         [Test]
         public void Should_get_categories_from_correct_url()
         {
-            string called_url = "";
-            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi()
-            {
-                HttpGet = (url) =>
-                {
-                    called_url = url;
-                    return string.Empty;
-                }
-            };
+            api_returns = "{\"categories\":[\"*\",\"movie\"]}";
 
+            api.GetCategories();
+
+            Assert.AreEqual("http://localhost:8080/api?mode=get_cats&output=json&apikey=theapikey", called_url);
         }
 
         [SetUp]
         public void Setup()
         {
-            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
+            api = new SabNzbdApi();
 
             api.HttpGet = (url) =>
             {
@@ -51,6 +45,6 @@ namespace SabNzbdUploader.Tests
 
         string called_url;
         string api_returns;
-        Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi api;
+        SabNzbdApi api;
     }
 }

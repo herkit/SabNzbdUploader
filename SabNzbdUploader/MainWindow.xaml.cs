@@ -22,6 +22,12 @@ namespace SabNzbdUploader
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            CategorySelector.DataContext = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi().GetCategories();
         }
     }
 }

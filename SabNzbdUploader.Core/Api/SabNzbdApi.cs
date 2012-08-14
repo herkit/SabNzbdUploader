@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.Dynamic;
 using Dynamic.Json;
 using Dynamic.Duck;
+using System.Configuration;
 
 namespace Arasoft.SabNzdbUploader.Core.Api
 {
@@ -18,7 +19,7 @@ namespace Arasoft.SabNzdbUploader.Core.Api
 
         public List<string> GetCategories()
         {
-            var d = JObject.Parse(HttpGet(""));
+            var d = JObject.Parse(HttpGet(BuildUrl("api?mode=get_cats&output=json")));
             
             dynamic data = d.AsDynamic();
 
@@ -33,6 +34,13 @@ namespace Arasoft.SabNzdbUploader.Core.Api
             return categories;
         }
 
+        private string BuildUrl(string resource)
+        {
+            var rooturl = ConfigurationManager.AppSettings["sabRootUrl"];
+            var apikey = ConfigurationManager.AppSettings["sabApiKey"];
+
+            return String.Format("{0}{1}&apikey={2}", rooturl, resource, apikey);
+        }
 
     }
 }
