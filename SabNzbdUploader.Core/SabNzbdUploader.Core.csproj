@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Json.NET Dynamic Extensions">
+    <Reference Include="Json.NET Dynamic Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Json.NET Dynamic Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
