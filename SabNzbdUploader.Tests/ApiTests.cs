@@ -35,10 +35,10 @@ namespace SabNzbdUploader.Tests
         [Test]
         public void Upload_file()
         {
-            api_returns = "";
+            api_returns = "{\"status\":true}";
             api.UploadFile(new FileInfo(@"c:\folder\the_file"), "the_category");
 
-            Assert.AreEqual("http://localhost:8080/api?mode=addfile&name=the_file&cat=the_category&apikey=theapikey", called_url);
+            Assert.AreEqual("http://localhost:8080/api?mode=addfile&cat=the_category&output=json&apikey=theapikey", called_url);
             Assert.AreEqual(@"c:\folder\the_file", uploaded_file);
         }
 

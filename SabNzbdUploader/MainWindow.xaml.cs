@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using Arasoft.SabNzdbUploader.Core;
+using System.Reflection;
 
 namespace SabNzbdUploader
 {
@@ -28,6 +30,11 @@ namespace SabNzbdUploader
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            var executingFile = Assembly.GetExecutingAssembly().Location;
+            if (!FileTypeTools.IsAssociated(".nzb", "Nzb_uploader_file", executingFile))
+                if (MessageBox.Show("NZB files are not associated with this application, do you want to associate now?", "Not associated", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    FileTypeTools.SetAssociation(".nzb", "Nzb_uploader_file", executingFile, "Usenet NZB file");
+
             var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
             List<string> categories = api.GetCategories();
             CategorySelector.ItemsSource = categories;
