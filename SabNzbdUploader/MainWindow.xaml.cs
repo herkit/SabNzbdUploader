@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Arasoft.SabNzdbUploader.Core;
 using System.Reflection;
+using System.ComponentModel;
 
 namespace SabNzbdUploader
 {
@@ -45,14 +46,19 @@ namespace SabNzbdUploader
 
         private void UploadButton_Click(object sender, RoutedEventArgs e)
         {
-            string category = "*";
-            if (CategorySelector.SelectedIndex >= 0)
-                category = (string)CategorySelector.SelectedValue;
+            UploadButton.IsEnabled = false;
+            CancelButton.IsEnabled = false;
+            CategorySelector.IsEnabled = false;
+            UploadingIndicator.Visibility = System.Windows.Visibility.Visible;
 
-            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
-            api.UploadFile(App.NZBFile, category);
 
-            Close();
+            BackgroundWorker fileUploader = new BackgroundWorker();
+            fileUploader.DoWork += fileUploader_DoWork;
+            fileUploader.RunWorkerCompleted += fileUplaoder_RunWorkerCompleted;
+
+            string category = CategorySelector.SelectedIndex >= 0 ? (string)CategorySelector.SelectedValue : "*";
+
+            fileUploader.RunWorkerAsync(new Tuple<FileInfo, string>(App.NZBFile, category));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -65,5 +71,23 @@ namespace SabNzbdUploader
             Close();
         }
 
+
+        void fileUploader_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var arg = (Tuple<FileInfo, string>)e.Argument;
+            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
+            api.UploadFile(arg.Item1, arg.Item2);
+
+        }
+
+        void fileUplaoder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

@@ -76,10 +76,11 @@ namespace Arasoft.SabNzdbUploader.Core.Api
             return categories;
         }
 
-        public void UploadFile(System.IO.FileInfo file, string category)
+        public bool UploadFile(System.IO.FileInfo file, string category)
         {
             var resource = BuildUrl(String.Format("api?mode=addfile&cat={1}&output=json", Uri.EscapeUriString(file.Name), category));
-            var result = HttpSendFile(resource, file.FullName);
+            dynamic result = JObject.Parse(HttpSendFile(resource, file.FullName)).AsDynamic();
+            return (bool)result.status;
         }
 
         private string BuildUrl(string resource)
