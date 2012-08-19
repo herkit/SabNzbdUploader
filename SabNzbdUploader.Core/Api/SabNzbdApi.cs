@@ -23,6 +23,13 @@ namespace Arasoft.SabNzdbUploader.Core.Api
             }
         };
 
+        public SabNzbdApi(string sabUrl, string sabApiKey)
+        {
+            _sabApiKey = sabApiKey;
+            _sabUrl = sabUrl;
+            
+        }
+
         public Func<string, string, string> HttpSendFile = (url, file) =>
         {
             using (var request = new System.Net.WebClient())
@@ -63,6 +70,8 @@ namespace Arasoft.SabNzdbUploader.Core.Api
 
             }
         };
+        private string _sabUrl;
+        private string _sabApiKey;
 
         public List<string> GetCategories()
         {
@@ -92,7 +101,7 @@ namespace Arasoft.SabNzdbUploader.Core.Api
         {
             get
             {
-                return ConfigurationManager.AppSettings["sabRootUrl"];
+                return _sabUrl;
             }
         }
 
@@ -100,7 +109,7 @@ namespace Arasoft.SabNzdbUploader.Core.Api
         {
             get
             {
-                return ConfigurationManager.AppSettings["sabApiKey"];
+                return _sabApiKey;
             }
         }
 

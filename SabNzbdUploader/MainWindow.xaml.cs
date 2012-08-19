@@ -1,21 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 using Arasoft.SabNzdbUploader.Core;
 using System.Reflection;
 using System.ComponentModel;
-using System.Windows.Media.Animation;
 
 namespace SabNzbdUploader
 {
@@ -37,9 +27,9 @@ namespace SabNzbdUploader
                 if (MessageBox.Show("NZB files are not associated with this application, do you want to associate now?", "Not associated", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     FileTypeTools.SetAssociation(".nzb", "Nzb_uploader_file", executingFile, "Usenet NZB file");
 
-            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
-            List<string> categories = api.GetCategories();
-            CategorySelector.ItemsSource = categories;
+            var index = CategorySelector.Items.IndexOf(Properties.Settings.Default.lastCategory);
+            if (index >= 0)
+                CategorySelector.SelectedItem = CategorySelector.Items[index];
 
             if (App.NZBFile.Exists)
                 FilenameLabel.Content = App.NZBFile.Name;
@@ -60,6 +50,10 @@ namespace SabNzbdUploader
             string category = CategorySelector.SelectedIndex >= 0 ? (string)CategorySelector.SelectedValue : "*";
 
             fileUploader.RunWorkerAsync(new Tuple<FileInfo, string>(App.NZBFile, category));
+
+            Properties.Settings.Default.lastCategory = category;
+            Properties.Settings.Default.Save();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -73,10 +67,15 @@ namespace SabNzbdUploader
         }
 
 
+        private static Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi GetApi()
+        {
+            return new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi(Properties.Settings.Default.sabRootUrl, Properties.Settings.Default.sabApiKey);
+        }
+
         void fileUploader_DoWork(object sender, DoWorkEventArgs e)
         {
             var arg = (Tuple<FileInfo, string>)e.Argument;
-            var api = new Arasoft.SabNzdbUploader.Core.Api.SabNzbdApi();
+            var api = GetApi();
             api.UploadFile(arg.Item1, arg.Item2);
 
         }
@@ -89,6 +88,13 @@ namespace SabNzbdUploader
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            var api = GetApi();
+            List<string> categories = api.GetCategories();
+            CategorySelector.ItemsSource = categories;
         }
     }
 }

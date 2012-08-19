@@ -1,7 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SabNzbdUploader.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="sabRootUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://xbmc.arasoft.local:8080/</Value>
+    </Setting>
+    <Setting Name="sabApiKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">e74a6f9095a2e84c757182756f0169bd</Value>
+    </Setting>
+    <Setting Name="lastCategory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">*</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

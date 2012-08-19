@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using Arasoft.SabNzdbUploader.Core.Api;
 using System.IO;
@@ -29,15 +27,16 @@ namespace SabNzbdUploader.Tests
 
             api.GetCategories();
 
-            Assert.AreEqual("http://localhost:8080/api?mode=get_cats&output=json&apikey=theapikey", called_url);
+            Assert.AreEqual("http://the_url/api?mode=get_cats&output=json&apikey=the_key", called_url);
         }
 
         [Test]
         public void Upload_file()
         {
+            api_returns = "{\"status\":true}";
             api.UploadFile(new FileInfo(@"c:\folder\the_file"), "the_category");
 
-            Assert.AreEqual("http://localhost:8080/api?mode=addfile&cat=the_category&output=json&apikey=theapikey", called_url);
+            Assert.AreEqual("http://the_url/api?mode=addfile&cat=the_category&output=json&apikey=the_key", called_url);
             Assert.AreEqual(@"c:\folder\the_file", uploaded_file);
         }
 
@@ -53,7 +52,7 @@ namespace SabNzbdUploader.Tests
         [SetUp]
         public void Setup()
         {
-            api = new SabNzbdApi();
+            api = new SabNzbdApi("http://the_url/", "the_key");
 
             api.HttpGet = (url) =>
             {
