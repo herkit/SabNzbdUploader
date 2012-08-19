@@ -15,6 +15,7 @@ using System.IO;
 using Arasoft.SabNzdbUploader.Core;
 using System.Reflection;
 using System.ComponentModel;
+using System.Windows.Media.Animation;
 
 namespace SabNzbdUploader
 {
